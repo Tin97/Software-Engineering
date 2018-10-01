@@ -45,6 +45,14 @@ class btree
             }
         }
 
+        void destroy()
+        {
+          if ( root != NULL )
+          {
+            destroy(root);
+          }
+        }
+
     private:
       //returns the key value of the lowest common ancestor
       int findLCA(node *root, int n1, int n2)
@@ -113,6 +121,19 @@ class btree
             }
           }
         }
+
+        void destroy (node *leaf)
+        {
+          if ( leaf != NULL )
+          {
+            destroy(leaf->left);
+            destroy(leaf->right);
+            free(leaf);
+          }
+
+          return;
+        }
+
         node *root;
 };
 
@@ -147,4 +168,8 @@ TEST_CASE( "Lowest common ancestor", "[lca]" ) {
     tree2.insert(2);
     tree2.insert(1);
     REQUIRE( tree2.lca(1, 5) == 5);
+
+    tree.destroy();
+    tree1.destroy();
+    tree2.destroy();
 }
