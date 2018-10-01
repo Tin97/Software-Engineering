@@ -113,7 +113,6 @@ class btree
             }
           }
         }
-
         node *root;
 };
 
@@ -127,10 +126,25 @@ TEST_CASE( "Lowest common ancestor", "[lca]" ) {
     tree.insert(8);
     tree.insert(13);
     tree.insert(4);
+    REQUIRE( tree.lca(7, 3) == 7);
     REQUIRE( tree.lca(1, 4) == 3);
     REQUIRE( tree.lca(4, 13) == 7);
     REQUIRE( tree.lca(13, 10) == 10);
     REQUIRE( tree.lca(10, 3) == 7);
     REQUIRE( tree.lca(5, 3) == -1);
 
+    btree tree1 = btree();
+    REQUIRE( tree.lca(3, 11) == -1 );
+
+    tree1.insert(1);
+    tree1.insert(2);
+    REQUIRE( tree1.lca(2, 2) == 2 );
+
+    btree tree2 = btree();
+    tree2.insert(5);
+    tree2.insert(4);
+    tree2.insert(3);
+    tree2.insert(2);
+    tree2.insert(1);
+    REQUIRE( tree2.lca(1, 5) == 5);
 }
