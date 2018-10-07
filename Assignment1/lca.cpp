@@ -45,6 +45,7 @@ class btree
             }
         }
 
+        //calls the private destroy function
         void destroy()
         {
           if ( root != NULL )
@@ -122,6 +123,7 @@ class btree
           }
         }
 
+        //deletes every leaf in the tree
         void destroy (node *leaf)
         {
           if ( leaf != NULL )
