@@ -40,14 +40,18 @@ class Graph(object):
             res += str(edge) + " "
         return res
 
-    def bfs(graph, vertex):
-    visited, queue = [], [vertex]
-    while queue:
-        vertex1 = queue.pop(0)
-        for w in graph[vertex1]:
-            if w not in visited:
-                visited.append(w)
-                queue.append(w)
+    def bfs(self, vertex):
+        visited, queue = [], [vertex]
+        while queue:
+            vertex1 = queue.pop(0)
+            for w in self.__graph_dict[vertex1]:
+                if w not in visited:
+                    visited.append(w)
+                    queue.append(w)
+        return visited
+
+    def lca(self, vertex):
+        return self.bfs(vertex).pop()
 
 
 if __name__ == "__main__":
@@ -61,6 +65,8 @@ if __name__ == "__main__":
 
 
     graph = Graph(g)
+
+    print(graph.lca(1))
 
     print("Vertices of graph:")
     print(graph.vertices())
