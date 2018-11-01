@@ -50,8 +50,15 @@ class Graph(object):
                     queue.append(w)
         return visited
 
-    def lca(self, vertex):
-        return self.bfs(vertex).pop()
+    def lca(self, vertex1, vertex2):
+        array1 = self.bfs(vertex1)
+        array2 = self.bfs(vertex2)
+
+        for a1 in reversed(array1):
+            for a2 in reversed(array2):
+                if a1 == a2:
+                    return a1
+
 
 
 if __name__ == "__main__":
@@ -66,4 +73,4 @@ if __name__ == "__main__":
 
     graph = Graph(g)
 
-    print(graph.lca(1))
+    print(graph.lca(1,5))
