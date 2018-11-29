@@ -2,28 +2,30 @@ from github import Github
 import json
 
 print("Enter your username: ")
-#username = input()
+username = input()
 
-g = Github("Tin97", "23081997pc")
+g = Github()
 
-file = open('bar_chart.json','w')
+file = open('data.json','w')
 
-print("You chose ")
+print("You chose ", username)
 
 print("There are following repositories: ")
-for repo in g.get_user().get_repos():
+for repo in g.get_user(username).get_repos():
     print(repo.name)
 
 
 print("Choose one of the repositories or type 'exit'")
-input = "Group30_app"
+
+input = input()
+#input = "Group30_app"
 
 contributors = []
 commits = []
 data = []
 
 found = False
-for repo in g.get_user().get_repos():
+for repo in g.get_user(username).get_repos():
     if ( input == repo.name ):
         found = True
 
@@ -39,7 +41,7 @@ for repo in g.get_user().get_repos():
                     commits[i]+=1
 
 if ( found == False ):
-    print("That repository doesn't exist, try again!")
+    print("That repository doesn't exist!")
 
 for i in range(len(commits)):
     print(contributors[i],commits[i])
@@ -47,8 +49,8 @@ for i in range(len(commits)):
 for i in range(len(commits)):
     data.append(
         {
-            'name': contributors[i],
-            'commits': commits[i]
+            'Letter': contributors[i],
+            'Freq': commits[i]
         }
     )
 
