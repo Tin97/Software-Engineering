@@ -16,9 +16,7 @@ for repo in g.get_user(username).get_repos():
 
 
 print("Choose one of the repositories or type 'exit'")
-
-input = input()
-#input = "Group30_app"
+input = "Group30_app"
 
 contributors = []
 commits = []
@@ -41,7 +39,7 @@ for repo in g.get_user(username).get_repos():
                     commits[i]+=1
 
 if ( found == False ):
-    print("That repository doesn't exist!")
+    print("That repository doesn't exist, try again!")
 
 for i in range(len(commits)):
     print(contributors[i],commits[i])
@@ -49,8 +47,8 @@ for i in range(len(commits)):
 for i in range(len(commits)):
     data.append(
         {
-            'Letter': contributors[i],
-            'Freq': commits[i]
+            'name': contributors[i],
+            'commits': commits[i]
         }
     )
 
