@@ -1,14 +1,17 @@
 from github import Github
+import json
 
 print("Enter your username: ")
-username = input()
+#username = input()
 
-g = Github()
+g = Github("Tin97", "23081997pc")
 
-print("You chose ", username)
+file = open('bar_chart.json','w')
+
+print("You chose ")
 
 print("There are following repositories: ")
-for repo in g.get_user(username).get_repos():
+for repo in g.get_user().get_repos():
     print(repo.name)
 
 
@@ -17,9 +20,10 @@ input = "Group30_app"
 
 contributors = []
 commits = []
+data = []
 
 found = False
-for repo in g.get_user(username).get_repos():
+for repo in g.get_user().get_repos():
     if ( input == repo.name ):
         found = True
 
@@ -39,3 +43,13 @@ if ( found == False ):
 
 for i in range(len(commits)):
     print(contributors[i],commits[i])
+
+for i in range(len(commits)):
+    data.append(
+        {
+            'name': contributors[i],
+            'commits': commits[i]
+        }
+    )
+
+json.dump(data, file)
