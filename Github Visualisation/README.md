@@ -21,3 +21,4 @@ After that, a user needs to run the local server:
 ```
 python server.py
 ```
+Finally, the bar chart can be seen on website localhost:8000
