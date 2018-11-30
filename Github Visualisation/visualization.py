@@ -3,8 +3,7 @@ import json
 
 print("Enter your username: ")
 username = input()
-print("Enter your password: ")
-password = input()
+password = getpass.getpass('Enter your password: ')
 
 g = Github(username, password)
 
