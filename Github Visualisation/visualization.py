@@ -1,5 +1,6 @@
 from github import Github
 import json
+import getpass
 
 print("Enter your username: ")
 username = input()
