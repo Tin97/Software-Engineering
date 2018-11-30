@@ -8,10 +8,14 @@ password = input()
 
 g = Github(username, password)
 
-print("You chose ", username)
+print("Enter a username to see its repositories:")
+
+username2 = input()
+
+print("You chose ", username2)
 
 print("There are following repositories: ")
-for repo in g.get_user().get_repos():
+for repo in g.get_user(username2).get_repos():
     print(repo.name)
 
 
@@ -23,7 +27,7 @@ commits = []
 data = []
 
 found = False
-for repo in g.get_user().get_repos():
+for repo in g.get_user(username2).get_repos():
     if ( input == repo.name ):
         found = True
 
