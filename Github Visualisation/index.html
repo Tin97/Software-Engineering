@@ -3,6 +3,9 @@
 
 <head>
 	<style>
+	body {
+    background-color: lightblue;
+	}
 
   .bar{
     fill: black;
@@ -13,14 +16,13 @@
   }
 
 	.axis {
-	  font: 10px sans-serif;
+	  font: 12px monospace;
 	}
 
 	.axis path,
 	.axis line {
 	  fill: none;
 	  stroke: #000;
-	  shape-rendering: crispEdges;
 	}
 
 	</style>
@@ -43,12 +45,12 @@ var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 var y = d3.scale.linear().range([height, 0]);
 
 // define the axis
-var xAxis = d3.svg.axis()
+var xAx = d3.svg.axis()
     .scale(x)
     .orient("bottom")
 
 
-var yAxis = d3.svg.axis()
+var yAx = d3.svg.axis()
     .scale(y)
     .orient("left")
     .ticks(10);
@@ -79,7 +81,7 @@ d3.json("data.json", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
+      .call(xAx)
     .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -88,7 +90,7 @@ d3.json("data.json", function(error, data) {
 
   svg.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
+      .call(yAx)
     .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 5)
